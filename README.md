@@ -1,3 +1,6 @@
+ ![image](https://github.com/alessiotucci/Perl/assets/116757689/4c0cb81c-7a3b-4207-a5ee-19b4028edb7a)
+
+
 # Perl
 Perl is a high-level, general-purpose, interpreted, dynamic programming language. Though Perl is not officially an acronym, there are various backronyms in use, including "Practical Extraction and Reporting Language". Perl was developed by Larry Wall in 1987 as a general-purpose Unix scripting language to make report processing easier.
 
