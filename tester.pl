@@ -58,7 +58,7 @@ sub test_philo
 
 foreach my $command (@commands)
 {
-        print $cyan, "Running command:$reset\n$command\n";
+        print $cyan, "\n---INVALID INPUT---$reset\n$command\n";
         my $output = `$command 2>&1`; # Capture both STDOUT and STDERR
 
         # Split the output into lines
@@ -86,12 +86,16 @@ sub test_philo_death
         './philo 2 400 200 200',
         './philo 2 600 600 200',
         './philo 2 700 350 350',
+								'./philo 3 400 200 200',
+								'./philo 5 500 300 200',
+								'./philo 4 600 300 300',
+								'./philo 6 800 400 400'
     );
 
     # Loop through each command in the array
     foreach my $command (@commands)
     {
-        print $cyan, "Running command:$reset\n$command\n";
+        print $cyan, "\n---DEATH FOR SURE---$reset\n$command\n";
         # Execute the command and capture both STDOUT and STDERR
         my $output = `$command 2>&1`;
 
