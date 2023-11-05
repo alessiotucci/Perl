@@ -32,33 +32,50 @@ system("make") == 0 or die "Failed to run make: $!";
 
 # Check if the 'philo' executable exists
 if (-e "philo") {
-    print $green, "\n\nThe 'philo' executable exists, you can start testing.\n\n\n";
+    print $green, "\n\nThe 'philo' executable exists, you can start testing.$reset\n\n\n";
 } else {
-    die $red, "The 'philo' executable does not exist.\n";
+    die $red, "The 'philo' executable does not exist.$reset\n";
 }
 
 
-sub test_philo {
+sub test_philo
+{
+	print "starting with error handling\n";
     my @commands = (
         './philo',
         './philo 2',
         './philo 2 200',
         './philo 2 300 230',
-        './philo 2 400 200 20abc'
+        './philo 2 400 200 20abc',
+        './philo 2a 400 200 20abc',
+        './philo 2 400 h200 20',
+        './philo 2 40b0 200 20c',
+								'./philo -1 400 200 200',
+								'./philo 2 -400 200 200',
+								'./philo 2 400 -200 200',
+								'./philo 2 400 200 -200'
     );
 
-    foreach my $command (@commands) {
-        print $cyan, "Running command: $command\n";
+foreach my $command (@commands)
+{
+        print $cyan, "Running command:$reset\n$command\n";
         my $output = `$command 2>&1`; # Capture both STDOUT and STDERR
-        if ($? == 0) {
-            print $green, "Command succeeded, but was expected to fail.\n";
-        } else {
-            print $green, "Command failed as expected. Error message: $output\n";
+
+        # Split the output into lines
+        my @lines = split /\n/, $output;
+
+        # Check the number of lines in the output
+        if (scalar @lines > 2)
+								{
+            print $red, "❌\t Command output is too long:\n$output\n";
+        }
+								else
+								{
+            print $green, "✅\t seem ok to me $reset\nOutput: $output\n";
         }
     }
 }
-
-# Call the test_philo subroutine
+				# Call the test_philo subroutine
 test_philo();
 
 
