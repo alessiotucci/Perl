@@ -58,7 +58,7 @@ sub test_philo
 
 foreach my $command (@commands)
 {
-        print $cyan, "\n---INVALID INPUT---$reset\n$command\n";
+        print $yellow, "\n---INVALID INPUT---$reset\n$command\n";
         my $output = `$command 2>&1`; # Capture both STDOUT and STDERR
 
         # Split the output into lines
@@ -95,7 +95,7 @@ sub test_philo_death
     # Loop through each command in the array
     foreach my $command (@commands)
     {
-        print $cyan, "\n---DEATH FOR SURE---$reset\n$command\n";
+        print $orange, "\n---DEATH FOR SURE---$reset\n$command\n";
         # Execute the command and capture both STDOUT and STDERR
         my $output = `$command 2>&1`;
 
