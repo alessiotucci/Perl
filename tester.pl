@@ -67,11 +67,11 @@ foreach my $command (@commands)
         # Check the number of lines in the output
         if (scalar @lines > 2)
 								{
-            print $red, "❌\t Command output is too long:\n$output\n";
+            print $red, "❌\t Command output is too long\n$output\n";
         }
 								else
 								{
-            print $green, "✅\t seem ok to me $reset\nOutput: $output\n";
+            print  "$output\n✅ $green  seem ok to me $reset\n";
         }
     }
 }
@@ -95,7 +95,7 @@ sub test_philo_death
     # Loop through each command in the array
     foreach my $command (@commands)
     {
-        print $orange, "\n---DEATH FOR SURE---$reset\n$command\n";
+        print $purple, "\n---DEATH FOR SURE---$reset\n$command\n";
         # Execute the command and capture both STDOUT and STDERR
         my $output = `$command 2>&1`;
 
@@ -109,7 +109,7 @@ sub test_philo_death
     foreach my $line (@lines) {
         # If the line contains the word "died", print it
         if ($line =~ /died/) {
-            print $green, "A philosopher died as expected.$reset\nOutput: $line\n";
+            print  "$line\n$green A philosopher died as expected $reset \n";
         }
     }
 								}
@@ -125,5 +125,10 @@ sub test_philo_death
 test_philo();
 # Call the test_philo_death subroutine
 test_philo_death();
+
+# Call the subroutine to check if philospher eat enough
+
+
+# Call the subrouting for few second to check if philosopher dies 
 
 
