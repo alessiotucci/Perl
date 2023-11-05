@@ -53,7 +53,7 @@ sub test_philo
 								'./philo -1 400 200 200',
 								'./philo 2 -400 200 200',
 								'./philo 2 400 -200 200',
-								'./philo 2 400 200 -200'
+								'./philo 2 400 200 -200',
     );
 
 foreach my $command (@commands)
@@ -75,7 +75,51 @@ foreach my $command (@commands)
         }
     }
 }
+# Define a subroutine called 'test_philo_death'
+sub test_philo_death
+{
+    print "starting the real check\n";
+    # Define an array of commands to be executed
+    my @commands = (
+        './philo 1 400 200 200',
+        './philo 1 800 200 200',
+        './philo 2 400 200 200',
+        './philo 2 600 600 200',
+        './philo 2 700 350 350',
+    );
+
+    # Loop through each command in the array
+    foreach my $command (@commands)
+    {
+        print $cyan, "Running command:$reset\n$command\n";
+        # Execute the command and capture both STDOUT and STDERR
+        my $output = `$command 2>&1`;
+
+        # Check if the output contains the word "died"
+        if ($output =~ /died/)
+        {
+        # Split the output into lines
+    my @lines = split /\n/, $output;
+
+    # Loop through each line
+    foreach my $line (@lines) {
+        # If the line contains the word "died", print it
+        if ($line =~ /died/) {
+            print $green, "A philosopher died as expected.$reset\nOutput: $line\n";
+        }
+    }
+								}
+        else
+        {
+            print $red, "No philosopher died, but was expected to.$reset\nOutput: $output\n";
+        }
+    }
+}
+
+
 				# Call the test_philo subroutine
 test_philo();
+# Call the test_philo_death subroutine
+test_philo_death();
 
 
