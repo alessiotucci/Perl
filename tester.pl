@@ -3,6 +3,7 @@ use warnings;
 use File::Spec;
 use Term::ANSIColor;
 
+
 # Define color variables
 my $green = color('bold green');
 my $cyan = color('bold cyan');
@@ -119,14 +120,79 @@ sub test_philo_death
         }
     }
 }
+# Define a subroutine called 'testy'
+sub testy
+{
+    # Print a message indicating the start of the meal check
+    print "Starting the meal check\n";
 
+    # Define an array of commands to be executed
+    # In this case, there's only one command, but you can add more if needed
+    my @commands = (
+        './philo 2 800 200 100 2'
+    );
+
+    # Loop through each command in the array
+    foreach my $command (@commands)
+    {
+        # Print the command that's being executed
+        print "\n---CHECKING FOR MEALS---\n$command\n";
+
+        # Execute the command and capture both STDOUT and STDERR
+        # The `2>&1` part redirects STDERR to STDOUT, so both are captured
+        my $output = `$command 2>&1`;
+
+        # Print a debug message
+
+        # Get the number of meals from the subroutine's arguments
+        my ($num_meals) = @_;
+
+        # Initialize a hash to store the count of meals for each philosopher
+        my %eat_count;
+
+        # Print a debug message
+
+        # Split the output into lines
+        my @lines = split "\n", $output;
+
+        # Print a debug message
+
+        # Process each line
+        foreach my $line (@lines)
+        {
+									# If the line indicates a philosopher has started eating
+		if ($line =~ /eating/)
+	{
+             print "$line\n";
+		        # Perform additional checks inside the if block
+	}
+
+        }
+
+        # Check if any philosopher has eaten less than the required number of meals
+        foreach my $philo (keys %eat_count)
+        {
+            if ($eat_count{$philo} < $num_meals)
+            {
+                # Print a message indicating that this philosopher has not eaten enough meals
+                print "Philosopher $philo has eaten only $eat_count{$philo} meals\n";
+            }
+												else
+												{
+                print "Philosopher $philo has eaten $eat_count{$philo} meals\n";
+												}
+        }
+    }
+}
 
 				# Call the test_philo subroutine
 test_philo();
 # Call the test_philo_death subroutine
 test_philo_death();
-
 # Call the subroutine to check if philospher eat enough
+
+# Call the test_philosopher subroutine
+testy();
 
 
 # Call the subrouting for few second to check if philosopher dies 
