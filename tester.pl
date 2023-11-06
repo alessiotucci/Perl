@@ -24,7 +24,6 @@ my $dir = "/Users/atucci/Desktop/gitPhiloMioafter/philo";
 # Command to be executed
 my $cmd = File::Spec->catfile($dir, "philo") . ' && echo "Press enter to continue"';
 
-
 # Change to the specified directory
 chdir $dir or die $red,"Cannot change to directory $dir: $!";
 
@@ -32,17 +31,20 @@ chdir $dir or die $red,"Cannot change to directory $dir: $!";
 system("make") == 0 or die "Failed to run make: $!";
 
 # Check if the 'philo' executable exists
-if (-e "philo") {
+if (-e "philo")
+{
     print $green, "\n\nThe 'philo' executable exists, you can start testing.$reset\n\n\n";
-} else {
+}
+else
+{
     die $red, "The 'philo' executable does not exist.$reset\n";
 }
-
 
 sub test_philo
 {
 	print "starting with error handling\n";
-    my @commands = (
+    my @commands =
+	(
         './philo',
         './philo 2',
         './philo 2 200',
@@ -51,10 +53,10 @@ sub test_philo
         './philo 2a 400 200 20abc',
         './philo 2 400 h200 20',
         './philo 2 40b0 200 20c',
-								'./philo -1 400 200 200',
-								'./philo 2 -400 200 200',
-								'./philo 2 400 -200 200',
-								'./philo 2 400 200 -200',
+		'./philo -1 400 200 200',
+		'./philo 2 -400 200 200',
+		'./philo 2 400 -200 200',
+		'./philo 2 400 200 -200',
     );
 
 foreach my $command (@commands)
@@ -67,11 +69,11 @@ foreach my $command (@commands)
 
         # Check the number of lines in the output
         if (scalar @lines > 2)
-								{
+		{
             print $red, "❌\t Command output is too long\n$output\n";
         }
-								else
-								{
+		else
+		{
             print  "$output\n✅ $green  seem ok to me $reset\n";
         }
     }
@@ -87,10 +89,10 @@ sub test_philo_death
         './philo 2 400 200 200',
         './philo 2 600 600 200',
         './philo 2 700 350 350',
-								'./philo 3 400 200 200',
-								'./philo 5 500 300 200',
-								'./philo 4 600 300 300',
-								'./philo 6 800 400 400'
+		'./philo 3 400 200 200',
+		'./philo 5 500 300 200',
+		'./philo 4 600 300 300',
+		'./philo 6 800 400 400'
     );
 
     # Loop through each command in the array
@@ -104,21 +106,23 @@ sub test_philo_death
         if ($output =~ /died/)
         {
         # Split the output into lines
-    my @lines = split /\n/, $output;
+    	my @lines = split /\n/, $output;
 
-    # Loop through each line
-    foreach my $line (@lines) {
+    	# Loop through each line
+    	foreach my $line (@lines)
+		{
         # If the line contains the word "died", print it
-        if ($line =~ /died/) {
+        if ($line =~ /died/)
+		{
             print  "$line\n$green A philosopher died as expected $reset \n";
         }
-    }
-								}
+    	}
+		}
         else
         {
             print $red, "No philosopher died, but was expected to.$reset\nOutput: $output\n";
         }
-    }
+	}
 }
 # Define a subroutine called 'testy'
 sub testy
@@ -141,31 +145,21 @@ sub testy
         # Execute the command and capture both STDOUT and STDERR
         # The `2>&1` part redirects STDERR to STDOUT, so both are captured
         my $output = `$command 2>&1`;
-
-        # Print a debug message
-
-        # Get the number of meals from the subroutine's arguments
+		# Get the number of meals from the subroutine's arguments
         my ($num_meals) = @_;
-
-        # Initialize a hash to store the count of meals for each philosopher
+		# Initialize a hash to store the count of meals for each philosopher
         my %eat_count;
-
-        # Print a debug message
-
-        # Split the output into lines
+		# Split the output into lines
         my @lines = split "\n", $output;
-
-        # Print a debug message
-
-        # Process each line
+		# Process each line
         foreach my $line (@lines)
         {
-									# If the line indicates a philosopher has started eating
-		if ($line =~ /eating/)
-	{
-             print "$line\n";
-		        # Perform additional checks inside the if block
-	}
+			# If the line indicates a philosopher has started eating
+			if ($line =~ /eating/)
+			{
+				print "$line\n";
+				# Perform additional checks inside the if block	
+			}
 
         }
 
@@ -177,24 +171,21 @@ sub testy
                 # Print a message indicating that this philosopher has not eaten enough meals
                 print "Philosopher $philo has eaten only $eat_count{$philo} meals\n";
             }
-												else
-												{
+			else
+			{
                 print "Philosopher $philo has eaten $eat_count{$philo} meals\n";
-												}
+			}
         }
     }
 }
 
-				# Call the test_philo subroutine
+# Call the test_philo subroutine
 test_philo();
 # Call the test_philo_death subroutine
 test_philo_death();
 # Call the subroutine to check if philospher eat enough
-
 # Call the test_philosopher subroutine
 testy();
-
-
 # Call the subrouting for few second to check if philosopher dies 
 
 
