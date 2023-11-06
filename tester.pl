@@ -20,8 +20,9 @@ my $reverse = color('reverse');
 my $reset = color('reset');
 
 # Absolute path to the directory containing your program
-my $dir = "/Users/atucci/Desktop/gitPhiloMioafter/philo";
+#my $dir = "/Users/atucci/Desktop/gitPhiloMioafter/philo";
 
+ my $dir = "/Users/atucci/Desktop/eugenio/philo";
 # Command to be executed
 my $cmd = File::Spec->catfile($dir, "philo") . ' && echo "Press enter to continue"';
 
@@ -87,7 +88,7 @@ sub test_philo_death
     my @commands = (
         './philo 1 400 200 200',
         './philo 1 800 200 200',
-        './philo 2 400 200 200',
+        './philo 2 400 210 210',
         './philo 2 600 600 200',
         './philo 2 700 350 350',
 		'./philo 3 400 200 200',
