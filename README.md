@@ -2,6 +2,8 @@
 
 [`useful playlist`](https://youtube.com/playlist?list=PLHx-WcR0sjJejG0IsGoGbmmpQZdhdUFVz&feature=shared)
 
+[`try to look for exercise`](https://www.google.com/search?q=programming+exercises+in+perl+filetype%3Apdf&sca_esv=abf976e12d8dcb8e&sca_upv=1&rlz=1C1RXQR_itIT1046IT1046&sxsrf=ADLYWILc_aTu3ab6miXGVa2xV84cx7jl6Q%3A1715272851909&ei=k_w8ZvSRN7Sji-gPwM60yAU&ved=0ahUKEwi0p5-ogYGGAxW00QIHHUAnDVkQ4dUDCBA&uact=5&oq=programming+exercises+in+perl+filetype%3Apdf&gs_lp=Egxnd3Mtd2l6LXNlcnAiKnByb2dyYW1taW5nIGV4ZXJjaXNlcyBpbiBwZXJsIGZpbGV0eXBlOnBkZkjzHFDkA1jJG3ACeAGQAQCYAfgBoAHQDKoBBjMuMTAuMbgBA8gBAPgBAZgCC6ACogrCAgoQABiwAxjWBBhHwgIFECEYoAHCAgUQIRifBZgDAIgGAZAGCJIHBTEuOS4xoAfnMA&sclient=gws-wiz-serp)
+
 # Perl
 Perl is a high-level, general-purpose, interpreted, dynamic programming language. Though Perl is not officially an acronym, there are various backronyms in use, including "Practical Extraction and Reporting Language". Perl was developed by Larry Wall in 1987 as a general-purpose Unix scripting language to make report processing easier.
 
